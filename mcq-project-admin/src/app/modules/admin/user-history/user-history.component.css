@@ -1,0 +1,196 @@
+.close {
+  outline: none !important;
+  border: none !important;
+}
+
+#modal-basic-title{
+  margin: 0;
+}
+
+.configuration-div {
+  display: flex;
+  align-items: flex-end;
+}
+
+.configuration-div div {
+  margin-right: 20px;
+  width: 45%;
+}
+
+
+.questionNo {
+  font-weight: bold;
+}
+
+.questionStatement {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#questiondiv {
+  margin-top: 20px;
+  display: flex;
+}
+
+.mainclass {
+  width: 500px;
+  border-radius: 2%;
+  background-color: white;
+  margin-left: 400px;
+}
+
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  margin-left: 20px;
+}
+
+#next {
+  float: right;
+  border-radius: 10%;
+  background-color: green;
+  color: white;
+}
+
+#previous {
+  float: left;
+  border-radius: 10%;
+  background-color: red;
+  color: white;
+}
+
+#showquestions {
+  margin-top: 20px;
+  margin-left: 50px;
+  border-radius: 10%;
+  background-color: orangered;
+  color: white;
+}
+
+#finish {
+  border-radius: 10%;
+  background-color: blue;
+  color: white;
+  margin-left: 10px;
+}
+
+#mainbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.mat-button-disabled {
+  background-color: gray !important;
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+.saving span {
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  border-radius: 50%;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #000;
+  margin: 0 3px;
+}
+
+.saving span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+
+#quesno {
+  color: darkred;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+.isSelected {
+  background-color: red;
+}
+
+.notSelected {
+  background-color: aqua;
+  color: black;
+}
+
+.options {
+  border: 2px solid black;
+  border-radius: 2%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 2px 2px;
+  cursor: pointer;
+
+}
+
+.options:hover {
+  background-color: green;
+}
+
+.green {
+  color: green;
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+
+}
+
+.alldetails {
+
+}
+
+.card {
+  align-items: center;
+}
+
+table {
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+/*.table-row {*/
+/*  margin: 10px 50px;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*.table-cell {*/
+/*  display: flex;*/
+/*  flex-basis: 20%;*/
+/*}*/

@@ -1,0 +1,26 @@
+table {
+  background-color: #fff;
+}
+
+.fa-arrow-left {
+  margin-top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#CreateNewQuiz{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#CreateNewQuiz a {
+  padding: 0;
+}
+
+.create-new-quiz-button{
+  width: 200px;
+  margin: 0;
+}
+

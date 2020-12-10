@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.saving span {
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  border-radius: 50%;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  margin: 0 3px;
+}
+.saving span:nth-child(2) {
+  animation-delay: .2s;
+}
+.saving span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}
+
+.button{
+  padding: 10px 20px;
+  background-color: transparent;
+  color: whitesmoke;
+  border-radius: 30px;
+  /*outline: none;*/
+}
+
+.button:focus{
+  outline: none;
+}
+
+.button-primary{
+  border: 2px solid Var(--button-primary);
+  color: Var(--button-primary);
+  background-color: transparent;
+}
+
+.button-primary:hover, .button-primary-active{
+  background-color: Var(--button-primary);
+  color: whitesmoke;
+  outline: none;
+  border: none;
+}
+
+
+
+.button-danger{
+  border: 2px solid Var(--button-danger);
+  color: Var(--button-danger);
+}
+
+.button-danger:hover{
+  background-color: Var(--button-danger);
+  color: whitesmoke;
+}
+
+.button-success{
+  border: 2px solid Var(--button-success);
+  color: Var(--button-success);
+}
+
+.button-success:hover{
+  background-color: Var(--button-success);
+  color: whitesmoke;
+}
+
+.button-primary-4{
+  border: 2px solid Var(--button-primary-4);
+  color: Var(--button-primary-4);
+}
+
+.button-primary-4:hover{
+  background-color: Var(--button-primary-4);
+  color: whitesmoke;
+}
+
+.button-primary-4-active{
+  background-color: Var(--button-primary-4);
+  border: none;
+}
+
+.button-primary-4-rounded{
+  border: 2px solid Var(--button-primary-4);
+  color: Var(--button-primary-4);
+  border-radius: 50%;
+}
+
+.button-primary-4-rounded-active{
+  background-color: Var(--button-primary-4);
+  border: 2px solid Var(--button-primary-4);
+  border-radius: 50%;
+}
+
+.text-input {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+
+  font-size: 20px;
+  padding: 10px 15px;
+}
+
+
+:root{
+  --background-dark: #e4e5e6;
+  --site-navigation-bar: #d9d8d8;
+  --background-lighter: #f5f3f3;
+
+  --button-success: #28A745;
+  --button-danger: #DC3545;
+  --button-mcq-check: #FF0000;
+  --button-primary: #BBE47F;
+  --button-primary-2: #FFCA28;
+  --button-primary-3: #FFA000;
+  --button-primary-4: #F57C00;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

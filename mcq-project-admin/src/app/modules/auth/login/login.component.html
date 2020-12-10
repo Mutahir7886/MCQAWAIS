@@ -1,0 +1,51 @@
+<div id="main">
+
+  <div class="form-div">
+    <div class="form-container">
+      <h1> LOGIN </h1>
+
+      <form [formGroup]="loginForm">
+
+        <div class="form-component" id="email-div">
+          <input type="email" class="text-input"
+                 formControlName="email" placeholder="Your Email">
+          <div class="danger" *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+            <p>
+              The email field is invalid.
+            </p>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="form-component" id="password-div">
+          <input type="password" class="text-input"
+                 formControlName="password"
+                 maxlength="20" minlength="8" placeholder="Your Password">
+          <div class="danger" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+            <p>
+              Invalid Password Field
+            </p>
+          </div>
+        </div>
+
+        <br>
+
+        <div>
+          <button type="submit" id="login-page-login-button"
+                  value="Login" [disabled]="loginForm.invalid" class="btn"
+                  (click)="login(loginForm)">
+            <span *ngIf="!isLoggingIn">Login</span>
+
+            <loaders-css loader="line-scale" style="display: inline;"
+                         [scale]="0.5" [color]="loaderColor" (mouseover)="loaderColor = '#3d395d'"
+                         *ngIf="isLoggingIn"></loaders-css>
+          </button>
+
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</div>

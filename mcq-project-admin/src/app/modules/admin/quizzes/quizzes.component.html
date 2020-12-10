@@ -1,0 +1,82 @@
+<div class="animated fadeIn">
+  <div *ngIf="allQuizzes.length > 0">
+
+    <div *ngIf="!isLoadingAllQuizzes && !isLoadingQuiz && currentQuizData.length > 0 && active === 'create-quiz'">
+<!--      <i matTooltip="Go Back" class="fa fa-arrow-left" (click)="active = 'all-quizzes'"></i>-->
+      <app-quiz-component
+        (goBackClicked)="active = 'all-quizzes'"></app-quiz-component>
+    </div>
+
+    <div *ngIf="active === 'all-quizzes'">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center;margin-top: 30px; margin-bottom: 40px;">
+        <div>
+          <h2 style="font-size: 40px; font-weight: normal; margin: 0">All Quizzes</h2>
+        </div>
+        <button matTooltip="Create a new Quiz" style="box-shadow: none; height: fit-content"
+                class="btn  btn-outline-primary create-new-quiz-button"
+                (click)="active = 'create-quiz'"> Create New Quiz
+        </button>
+      </div>
+
+      <table class="table table-responsive-sm table-hover table-outline mb-0"
+             *ngIf="!isLoadingAllQuizzes && currentQuizData.length > 0">
+        <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <!--        <th class="text-center">No. of Questions</th>-->
+          <th>No. of Questions</th>
+          <th>No. of Attempts</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let quiz of allQuizzes;">
+          <td>
+            <div>{{quiz.quiz_name}}</div>
+            <!--          <div class="small text-muted">-->
+            <!--            <span>New</span> | Registered: Jan 1, 2015-->
+            <!--          </div>-->
+          </td>
+          <td>
+            <div>{{quiz.questions_ids.length}}</div>
+
+            <!--          <div class="small text-muted">Last login</div>-->
+            <!--          <strong>10 sec ago</strong>-->
+          </td>
+          <td>
+            <div>{{quiz.tries}}</div>
+
+            <!--          <div class="small text-muted">Last login</div>-->
+            <!--          <strong>10 sec ago</strong>-->
+          </td>
+          <td>
+            <button style="box-shadow: none;width: 180px" class="btn btn-primary"
+                    [class.saving]="isLoadingQuiz && quiz.quiz_id === currentQuizId" (click)="loadQuiz(quiz)">
+              Show Details <span></span><span></span><span></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="!isLoadingAllQuizzes && !isLoadingQuiz && currentQuizData.length > 0 && active === 'show-details'">
+<!--      <i matTooltip="Go Back" class="fa fa-arrow-left" (click)="active = 'all-quizzes'"></i>-->
+
+      <app-quiz-component
+        (goBackClicked)="active = 'all-quizzes'"
+        [quiz]="currentQuizData" [toShowDeleteButton]="true"
+        [isEditingTestName]="false" [currentComponent]="'admin'"
+        (quizNameUpdated)="quizNameUpdated($event)"
+        (quizDeleted)="quizDeleted($event)">
+      </app-quiz-component>
+    </div>
+
+  </div>
+
+  <div *ngIf="!isLoadingAllQuizzes && allQuizzes.length <= 0">
+    You have not created any quizzes yet!
+  </div>
+</div>
+

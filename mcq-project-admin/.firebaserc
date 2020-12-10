@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "mcq-project-97383"
+  },
+  "targets": {
+    "mcq-project-97383": {
+      "hosting": {
+        "admin": [
+          "admin-mcq-project-a208b"
+        ]
+      }
+    }
+  }
+}

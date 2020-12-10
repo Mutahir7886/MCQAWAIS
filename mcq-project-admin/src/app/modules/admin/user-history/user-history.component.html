@@ -1,0 +1,155 @@
+<ng-template #attemptDetailsModal let-modal>
+
+  <div class="modal-header">
+    <h1 class="modal-title" id="modal-basic-title"> Add MCQ </h1>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Closed')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div *ngFor="let mcq of currentAttempt.details; let i = index;">
+      <h3>Question: {{mcq.statement}}
+        <span *ngIf="mcq.userAnswer === 'null'" style="color: grey"> (Unattempted) </span>
+      </h3>
+      <ul>
+        <li *ngFor="let option of mcq.options"
+            [ngClass]="(option===mcq.correctAnswer)?'green' :
+              (mcq.userAnswer!==mcq.correctAnswer && mcq.userAnswer===option) ? 'red': ''">
+          {{option}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.dismiss('Dismissed')"
+            style="margin-left: 20px; margin-right: 12px">Close
+    </button>
+  </div>
+
+</ng-template>
+
+<div class="animated fadeIn" style="padding-top: 20px; height: 100vh">
+
+  <!--  <div *ngIf="isDataLoading" style="font-size: 40px;" [ngClass]="isDataLoading?'saving':''">-->
+  <!--    Loading Data <span></span><span></span><span></span>-->
+  <!--  </div>-->
+
+  <div *ngIf="!isDataLoading && scoresData.length > 0">
+
+    <div class="configuration-div">
+
+      <div>
+        <label>Select Quizzes</label>
+        <ng-multiselect-dropdown
+          [placeholder]="'Select Quizzes'"
+          [settings]="quizzesDropDownSettings"
+          [data]="quizzesDropDownList"
+          [(ngModel)]="quizzesSelected">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <div>
+        <label>Select Users</label>
+        <ng-multiselect-dropdown
+          [placeholder]="'Select Users'"
+          [settings]="usersDropDownSettings"
+          [data]="usersDropDownList"
+          [(ngModel)]="usersSelected">
+        </ng-multiselect-dropdown>
+
+        <!--        <ng-select [items]="quizzesDropDownList"-->
+        <!--                   placeholder="Select Quiz"-->
+        <!--                   bindLabel="item_text"-->
+        <!--                   bindValue="item_id"-->
+        <!--                   [multiple]="true"-->
+        <!--                   (change)="userSelected($event)"-->
+        <!--                   [(ngModel)]="quizzesSelected">-->
+        <!--        </ng-select>-->
+      </div>
+
+      <button class="btn btn-outline-primary" style="width: 166px; height: 45px" (click)="loadAttempts()"> Apply Filters</button>
+    </div>
+
+    <div *ngIf="scoresData.length > 0">
+
+      <table class="table table-responsive-sm table-hover table-outline mb-0">
+        <thead class="thead-light">
+        <tr>
+          <th>Quiz Name</th>
+          <th>User Name</th>
+          <th>Attempt No.</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Score</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let attempt of attemptsData; let i = index">
+          <td>
+            <div>{{attempt.quiz_name}}</div>
+          </td>
+          <td>
+            <div>{{attempt.user_name}}</div>
+          </td>
+          <td>
+            <div>{{attempt.isEmpty ? 'N/A' : attempt.attemptNo}}</div>
+          </td>
+          <td>
+            <div>{{attempt.isEmpty ? 'N/A' : attempt.date}}</div>
+          </td>
+          <td>
+            <div>{{attempt.isEmpty ? 'N/A' : attempt.time}}</div>
+          </td>
+          <td>
+            <div>{{attempt.isEmpty ? 'N/A' : attempt.score}}</div>
+          </td>
+          <td>
+            <button class="btn btn-block btn-primary quizDetails"
+                    (click)="showAttemptDetails(attemptDetailsModal, attempt)" [disabled]="attempt.isEmpty">
+              Show Details <span></span><span></span><span></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <!--      <div class="table-row">-->
+<!--        <span class="table-cell"> Quiz Name </span>-->
+<!--        <span class="table-cell"> User Name </span>-->
+<!--        <span class="table-cell"> Attempt No. </span>-->
+<!--        <span class="table-cell"> Date </span>-->
+<!--        <span class="table-cell"> Time </span>-->
+<!--        <span class="table-cell"> Score </span>-->
+<!--        <span class="table-cell"> Action </span>-->
+<!--      </div>-->
+
+<!--      <div *ngFor="let attempt of attemptsData; let i = index" class="table-row">-->
+<!--        <span class="table-cell"> {{attempt.quiz_name}} </span>-->
+<!--        <span class="table-cell"> {{attempt.user_name}} </span>-->
+<!--        <span class="table-cell"> {{attempt.isEmpty ? 'N/A' : attempt.attemptNo}} </span>-->
+<!--        <span class="table-cell"> {{attempt.isEmpty ? 'N/A' : attempt.date}} </span>-->
+<!--        <span class="table-cell"> {{attempt.isEmpty ? 'N/A' : attempt.time}} </span>-->
+<!--        <span class="table-cell"> {{attempt.isEmpty ? 'N/A' : attempt.score}} </span>-->
+<!--        <button (click)="showAttemptDetails(attemptDetailsModal, attempt)" [disabled]="attempt.isEmpty"-->
+<!--                class="table-cell">-->
+<!--          Details-->
+<!--        </button>-->
+<!--      </div>-->
+    </div>
+
+    <div *ngIf="scoresData.length <= 0">
+      There are no records corresponding to your filters.
+    </div>
+  </div>
+
+</div>
+
+<ng-template [ngIf]="!isDataLoading && scoresData.length<=0 " style="font-size: 40px;">
+  There is no history to show.
+</ng-template>
+

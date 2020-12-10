@@ -1,0 +1,112 @@
+#main {
+  width: 100%;
+  font-family: "Segoe UI";
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 5px;
+  width: 35%;
+  margin: 30px auto;
+  padding: 30px;
+  text-align: center;
+  background-color: Var(--site-navigation-lighter);
+
+}
+
+#privilege-level-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.danger > p {
+  background-color: indianred;
+  color: whitesmoke;
+  display: inline-block;
+  padding: 5px;
+  border: 1px ridge darkred;
+}
+
+.info > p {
+  background-color: darkseagreen;
+  color: whitesmoke;
+  display: inline-block;
+  padding: 5px;
+  border: 1px ridge green;
+}
+
+/* ##################################### Form Styling #########################################*/
+.form-container {
+  border: 2px solid indianred;
+}
+
+.form-container h1 {
+  font-size: 44px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: Var(--site-font-white);
+}
+
+input.text-input {
+  border-bottom: 3px solid Var(--site-navigation-lighter);
+  border-top-style: hidden;
+  border-left-style: hidden;
+  border-right-style: hidden;
+  border-bottom-style: groove;
+  padding: 10px;
+  width: 100%;
+  background-color: transparent;
+  color: Var(--site-font-white);
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: Var(--site-font-dark);
+}
+
+#login-page-login-button {
+  border: 3px solid Var(--site-font-white);
+  color: Var(--site-font-white);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding: 7px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+}
+
+#login-page-login-button:hover {
+  background-color: Var(--site-font-white);
+  color: Var(--site-navigation-lighter);
+}
+
+#login-page-signup-button-div {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: Var(--site-font-white);
+  font-size: 16px;
+}
+
+#login-page-signup-button-div p {
+  color: Var(--site-font-dark);
+}
+
+#login-page-signup-button {
+  margin-left: 10px;
+  text-decoration: none;
+  color: Var(--site-button-color);
+  padding: 0;
+}
+
+#login-page-signup-button:hover {
+  border-bottom: 2px solid Var(--site-button-color);
+}
+
+

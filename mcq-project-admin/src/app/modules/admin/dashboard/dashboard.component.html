@@ -1,0 +1,45 @@
+<div class="animated fadeIn">
+<!--  <button class="button button-primary-4" (click)="exportDB()">Export Data</button>-->
+<!--  <button class="button button-primary-4" (click)="importDB()">Import Data</button>-->
+<!--  <p> Insert Data </p>-->
+<!--  <input #fileInput accept="text/csv" type="file" (change)="insertDB(fileInput)">-->
+<!--  <p> Update Data </p>-->
+<!--  <input #uploadFile accept="text/csv" type="file" (change)="updateDB(uploadFile)">-->
+  <div *ngIf="!isLoadingData" class="row animated fadeIn" style="padding: 30px">
+    <div class="card card-red">
+      <div class="card-number">
+        <p>{{totalQuizzes}}</p>
+      </div>
+      <div class="card-text">
+        <p>Total Quizzes</p>
+      </div>
+    </div>
+    <div class="card card-blue">
+      <div class="card-number">
+        <p>{{totalMembers}}</p>
+      </div>
+      <div class="card-text">
+        <p>Total Members</p>
+      </div>
+    </div>
+    <div class="card card-green">
+      <div class="card-number">
+        <p>{{totalTries}}</p>
+      </div>
+      <div class="card-text">
+        <p>Total Tries</p>
+      </div>
+    </div>
+    <div class="card card-sky-blue">
+      <div class="card-number">
+        <p>{{totalQuestions}}</p>
+      </div>
+      <div class="card-text">
+        <p>Total Questions</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isLoadingData" [class.saving]="isLoadingData">
+    Loading <span></span><span></span><span></span>
+  </div>
+</div>

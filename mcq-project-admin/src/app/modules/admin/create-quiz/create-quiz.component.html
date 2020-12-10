@@ -1,0 +1,194 @@
+<ng-template #addMCQModal let-modal>
+
+  <div class="modal-header">
+    <h1 class="modal-title" id="modal-basic-title"> Question Detail </h1>
+    <!--    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Closed')">-->
+    <!--      <span aria-hidden="true">&times;</span>-->
+    <!--    </button>-->
+  </div>
+
+  <div class="modal-body">
+
+    <form [formGroup]="mcqForm">
+
+      <div>
+        <label id="StatementLabel">
+          Question Statement
+        </label>
+
+        <textarea formControlName="statement" placeholder="Write Question Statement..."
+                  maxlength="320" minLength="10"
+                  class="textArea">
+          </textarea>
+        <p class="caution" id="statementCaution">Upto 320 characters</p>
+        <p style="color: red"
+           *ngIf="!mcqForm.controls['statement'].valid && mcqForm.controls['statement'].touched">
+          Statement field is not valid
+        </p>
+      </div>
+      <div>
+        <button [disabled]="options.controls.length ? options.invalid: false" class="btn btn-primary"
+                id="AddOptionButton" (click)="addOption()" *ngIf="options.length >= 0 && options.length < 4">
+          <i class="fa fa-plus"></i>
+          Add Options
+        </button>
+      </div>
+
+      <div class="AddOptionCorrectAnswer">
+        <p class="caution"> Min 2 and Max 4 options</p>
+        <p *ngIf="options.length>0" style="margin-top:5px;margin-left: 110px" id="CorrectAnswerButton"> Correct
+          Answer</p>
+        <p *ngIf="options.length>0" style="margin-top:5px;margin-left: 10px" id="DeleteAnswerButton"> Delete Option</p>
+      </div>
+
+
+      <div *ngIf="options.length > 0">
+        <div formArrayName="options">
+          <div *ngFor="let option of options.controls; let i = index" class="mcq-options-div">
+            <div style="display: flex;flex-direction: column">
+              <label>
+                <input [formControl]="option" placeholder="Option {{i + 1}}"
+                       (input)="i === this.answerIndex ? answer.setValue(options.controls[i].value): false ;">
+              </label>
+              <p style="color: red"
+                 *ngIf="!option.valid && option.touched">
+                Option field is not valid
+              </p>
+            </div>
+
+            <div style="margin-right: 50px" class="option-action-button">
+              <input *ngIf="options.length > 1" type="radio" name="answer"
+                     style="margin: 0 80px"
+                     (change)="answerIndex = i; answer.setValue(options.controls[i].value); mcqForm.markAsDirty()"
+                     [checked]="i === answerIndex">
+              <i class="fa fa-trash" (click)="removeOption(i)"></i>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="modal-footer">
+    <div style="display: flex;justify-content: center ">
+      <button type="button"
+              class="btn btn-block btn-danger active" (click)="modal.dismiss('Dismissed')"
+              style="width: 100px;margin:0px 8px !important;">
+        Cancel
+      </button>
+      <button type="button"
+              class="btn btn-block btn-success active"
+              [disabled]="mcqForm.invalid || !mcqForm.dirty"
+              (click)="modal.close('Closed')"
+              style="width: 100px;margin:0px !important;">
+        Save
+      </button>
+    </div>
+
+  </div>
+
+</ng-template>
+
+<div class="animated fadeIn">
+
+  <div class="dashboard-main">
+
+    <div class="dashboard-header dashboard-row">
+      <div class="test-name-div">
+
+        <div style="display: flex;justify-content: center;align-items: center">
+          <mat-form-field style="width: 500px;text-align: center" appearance="outline"
+                          *ngIf="isEditingTestName">
+            <input matInput type="text" [(ngModel)]="quiz.quiz_name" placeholder="Write Quiz Name..."
+                   (input)="quiz.quiz_name && quiz.length > 0 ? toShowUploadButton = true : toShowUploadButton = false;"
+                   (keypress)="$event.key ==='Enter'?isEditingTestName=false : ''">
+            <mat-icon matTooltip="Enter Quiz Name" style="font-size: 28px; cursor: pointer" matSuffix
+                      (click)="isEditingTestName = false">done
+            </mat-icon>
+          </mat-form-field>
+        </div>
+
+
+        <div class="test-name-saved-div " *ngIf="!isEditingTestName && quiz.quiz_name !=''">
+          <i matTooltip="Go Back" class="fa fa-arrow-left" (click)="goBackClicked.emit()"
+          style="font-size: 24px; margin-right: 20px"></i>
+          <span style="font-size: 40px">{{quiz.quiz_name}}</span>
+          <i matTooltip="Edit Quiz Name" class="test-name-edit-icon fa fa-pencil editIcon"
+             (click)="isEditingTestName = true"></i>
+        </div>
+
+      </div>
+
+      <div *ngIf="!isEditingTestName" class="test-action-button">
+        <div style="margin-right: 10px">
+          <button matTooltip="Add a question" style="box-shadow: none" class=" btn btn-block btn-outline-primary"
+                  (click)="openAddMCQModal(addMCQModal)">
+            <i class="fa fa-plus"></i>
+            Add Question
+          </button>
+        </div>
+
+        <i class="test-name-edit-icon fa fa-save" *ngIf="toShowUploadButton"
+           matTooltip="Save Quiz"
+           (click)="uploadQuiz()" [ngClass]="isUploadingQuiz ? 'saving': ''">
+          <span></span><span></span><span></span>
+        </i>
+        <i matTooltip="Delete Quiz" class="test-name-edit-icon fa fa-trash" *ngIf="toShowDeleteButton"
+           (click)="deleteQuiz()"
+           [ngClass]="isDeletingQuiz ? 'saving': ''">
+          <span></span><span></span><span></span>
+        </i>
+      </div>
+    </div>
+
+    <!--    <div class="dashboard-row">-->
+    <!--      <button class="button button-primary-4" (click)="openAddMCQModal(addMCQModal)"><i class="fa fa-plus"></i> Add MCQ-->
+    <!--      </button>-->
+    <!--    </div>-->
+
+    <div class="dashboard-row">
+      <mat-accordion *ngIf="quiz.length > 0">
+        <mat-expansion-panel (opened)="false" (closed)="false"
+                             *ngFor="let mcq of quiz;let i=index" style="margin: 20px 50px;">
+          <mat-expansion-panel-header>
+            <div style="display:flex;justify-content: space-between;width: 100%">
+              <div>
+                <mat-panel-title style="font-size: 25px" >
+                  {{mcq.statement}}
+                </mat-panel-title>
+              </div>
+              <div class="mcq-action-button">
+                <i matTooltip="edit Question" class="test-name-edit-icon fa fa-edit" (click)="openUpdateMCQModal(addMCQModal, mcq)"></i>
+                <i matTooltip="Delete Question" class="test-name-edit-icon fa fa-trash" (click)="deleteMCQ(mcq)" *ngIf="quiz.length > 1"></i>
+              </div>
+            </div>
+
+          </mat-expansion-panel-header>
+
+          <div class="mcq-div">
+            <div class="mcq-data-div">
+
+              <div *ngFor="let option of mcq.options;let i =index">
+<!--                <span style="font-weight: bold">{{i + 1}})</span>-->
+                <span >
+                  {{option}}<b [class.correctAnswer]="option ===mcq.answer" >{{option ===mcq.answer? 'Correct':''}}</b>
+            </span>
+              </div>
+
+            </div>
+<!--            <div class="mcq-action-button">-->
+<!--              <i class="test-name-edit-icon fa fa-edit" (click)="openUpdateMCQModal(addMCQModal, mcq)"></i>-->
+<!--              <i class="test-name-edit-icon fa fa-trash" (click)="deleteMCQ(mcq)" *ngIf="quiz.length > 1"></i>-->
+<!--            </div>-->
+          </div>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+.row{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card {
+  padding: 20px;
+  height: 200px !important;
+  width: 200px !important;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-sky-blue {
+  background-color: skyblue;
+}
+
+.card-blue {
+  background-color: #8178b5;
+}
+
+.card-green {
+  background-color: mediumseagreen;
+}
+
+.card-red {
+  background-color: #e06969;
+}
+
+.card-text-value {
+  font-size: 120px;
+}
+
+.card-number {
+  flex-basis: 60%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+}
+
+.card-number{
+  font-size: 80px;
+}
+
+.card-text {
+  flex-basis: 30%;
+  font-size: 20px;
+}

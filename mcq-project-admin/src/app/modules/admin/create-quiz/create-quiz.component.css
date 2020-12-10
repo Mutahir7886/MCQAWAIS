@@ -1,0 +1,180 @@
+/* For Showing mat-select in modal*/
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.dashboard-main {
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-row {
+  margin-bottom: 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.test-action-button i.fa-save {
+  color: black;
+  margin-right: 10px;
+}
+
+.test-name-div {
+  width: 100% !important;
+  margin-bottom: 50px;
+}
+
+.test-name-edit-div i.fa-check {
+  margin: 100px 20px;
+}
+
+button {
+  outline: none !important;
+}
+
+.test-name-saved-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.quizName{
+  font-size: 36px;
+  line-height: 36px;
+  margin-left:400px;
+}
+
+.test-name-saved-div span {
+  margin-right: 20px;
+}
+
+.test-name-edit-icon, .test-name-edit-div i {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.test-action-button {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50%;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.mcq-div {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  justify-content: space-between;
+}
+
+.mcq-action-button {
+  display: flex;
+}
+
+.mcq-action-button i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.mcq-action-button i.fa-edit {
+  color: Var(--button-primary-4);
+}
+
+.mcq-action-button i.fa-trash {
+  color: Var(--button-danger);
+}
+
+.mcq-options-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.option-action-button i {
+  font-size: 20px;
+}
+
+.textArea {
+  width: 100%;
+  height: 110px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+#StatementLabel {
+  margin-left: 2px;
+  padding-bottom: 2px;
+  font-weight: bold;
+}
+
+
+
+.caution{
+  font-size: 12px;
+  color: #ccc;
+}
+
+.AddOptionCorrectAnswer {
+  display: flex;
+}
+
+#AddOptionButton{
+  margin-bottom: 10px;
+}
+
+#CorrectAnswerButton{
+  font-weight: bold;
+}
+
+#DeleteAnswerButton{
+  font-weight: bold;
+
+}
+
+.editIcon{
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.abc{
+  margin-top: 170px;
+  margin-left: 200px;
+
+}
+
+.abc1{
+  margin-left: 400px;
+
+}
+
+.modal-content{
+  width: 500px !important;
+}
+
+.mat-form-field-infix{
+  border: none;
+  margin-top: 5px;
+  font-size: 28px;
+}
+
+.correctAnswer{
+  font-size: 14px;
+  color: darkgreen;
+  border: 2px solid darkgreen;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 2px 3px ;
+}

@@ -1,0 +1,46 @@
+.d-md-block {
+  display: none !important;
+}
+
+app-header {
+  padding: 0 !important;
+}
+
+/*#my-nav-bar{*/
+/*  padding: 10px;*/
+/*  display: flex;*/
+/*  height: 70px;*/
+/*  align-items: center;*/
+/*  overflow: no-content;*/
+/*  justify-content: space-between;*/
+/*  !*background-color: #8078bf;*!*/
+/*  !*color: whitesmoke;*!*/
+/*  !*background-color: Var(--site-navigation-bar);*!*/
+/*  background-color: #fff;*/
+/*  !*color: Var(--site-font-white);*!*/
+/*  color: #000;*/
+
+/*}*/
+
+/*#my-nav-bar-site-title{*/
+/*  margin-left: 15px;*/
+/*  font-size: 32px;*/
+/*}*/
+
+/*#user-menu-div{*/
+/*  !*border-radius: 50%;*!*/
+/*  margin-right: 20px;*/
+/*}*/
+
+/*#user-menu-div:hover{*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.img-avatar {*/
+/*  height: 40px;*/
+/*  width: 40px;*/
+/*}*/
+
+.dropdown-item {
+  cursor: pointer;
+}
